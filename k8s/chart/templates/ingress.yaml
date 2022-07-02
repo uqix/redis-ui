@@ -30,9 +30,12 @@ spec:
         paths:
   {{- range $p := $paths }}
           - path: {{ $p }}
+            pathType: Prefix
             backend:
-              serviceName: p3x-redis-ui-service
-              servicePort: p3x-redis-ui
+              service:
+                name: p3x-redis-ui-service
+                port:
+                  name: p3x-redis-ui
   {{- end -}}
   {{- end -}}
   {{- else }}
@@ -40,9 +43,12 @@ spec:
         paths:
   {{- range $p := $paths }}
           - path: {{ $p }}
+            pathType: Prefix
             backend:
-              serviceName: p3x-redis-ui-service
-              servicePort: p3x-redis-ui
+              service:
+                name: p3x-redis-ui-service
+                port:
+                  name: p3x-redis-ui
   {{- end -}}
   {{- end -}}
   {{- if .Values.ingress.tls }}
